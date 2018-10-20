@@ -9,7 +9,6 @@ class CommentsController < ApplicationController
     @user_name = User.find_by(id: current_user.id)
     @comments.user_name = @user_name.name
     @comments.save
-    binding.pry
     redirect_to topics_path
 
   end
