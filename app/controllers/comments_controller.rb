@@ -5,8 +5,11 @@ class CommentsController < ApplicationController
   end
 
   def create
+    #ログインユーザのコメント内容を取得
     @comments = current_user.comments.new(comment_params)
+    #ログインユーザのユーザ情報を取得
     @user_name = User.find_by(id: current_user.id)
+    #コメント入力したユーザ名を取得
     @comments.user_name = @user_name.name
     @comments.save
     redirect_to topics_path
